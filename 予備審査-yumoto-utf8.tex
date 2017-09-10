@@ -119,7 +119,7 @@
 本研究では，ブラックボックステストを対象とする．
 \subsection{テストレベル}
 ソフトウェアテストは，開発ライフサイクルの中で複数のテストレベルに分けて行われる．
-複数のテストレベルは，図1で示すVモデルと呼ばれる技術面にフォーカスしたサイクルモデルにて表現することができる[3]．
+複数のテストレベルは，図1で示すVモデルと呼ばれる技術面にフォーカスしたサイクルモデルにて表現することができる\cite{arnold1996software}．
 各検証レベルはソフトウェア開発の段階的詳細化のレベルと対応している．
 本研究は，複数のレベルの中で，赤枠で囲んだシステムレベルの検証で行われるブラックボックステストに焦点を当てている．
 システムレベルのテストは，開発した単体のソフトウェアがすべて統合されるため，規模の増大と複雑性の増加の影響を直接的に受けるからである．
@@ -1260,14 +1260,31 @@ DFD，ER図、CRUD図をテストベースとして，3つのルールを適用�
 
 %%%%%%%%%%%%%%%%%%%%%%%
 
-\addtocontents{toc}{\contentsline {chapter}{\numberline {}参考文献}{123}}
+\chapter*{謝辞}
+\addcontentsline{toc}{chapter}{\numberline{}謝辞}
+入力例
 
-% \begin{thebibliography}{9}
-  %% 情報処理学会のフォーマットを使用
-% \bibliographystyle{ipsjunsrt}
-  %% 電子情報通信学会のフォーマット
-\bibliographystyle{sieicej}
+
+\newpage
+
+\addcontentsline{toc}{chapter}{\numberline{}参考文献}
+\renewcommand{\bibname}{参考文献}
+
+%% 参考文献に jbibtex を使う場合
+%\bibliographystyle{junsrt}
+%\bibliography{samplebib}
+%% [compile] jbibtex sample; platex sample; platex sample;
+
+% \addtocontents{toc}{\contentsline {chapter}{\numberline {}参考文献}{123}}
+ \bibliographystyle{sieicej}
 \bibliography{mybib1}
+
+% \begin{thebibliography}{1}
+% \bibitem{RakRak}
+% 野寺隆志.
+% \newblock 楽々 \LaTeX.
+% \newblock 共立出版, 1990.
+% \end{thebibliography}
 
 \end{document}
 
