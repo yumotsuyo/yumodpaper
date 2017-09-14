@@ -20,3 +20,6 @@ http://shirokai.hatenablog.com/entry/texshop-bib
 
 bibファイルについての説明
 http://www.ketsuago.com/entry/2015/03/16/231806
+
+文献データベース
+http://akita-nct.jp/yamamoto/comp/latex/bibtex/bibtex.html#data_base
