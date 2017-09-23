@@ -3,6 +3,10 @@ Latexのメモ
 PlatformIO IDE Terminal
 ショートカットはShift+Ctl+@
 
+Ctrl　option t
+
+Shift command return
+
 GitGitHub
 http://blog.rokuzeudon.com/entry/atom-git
 
