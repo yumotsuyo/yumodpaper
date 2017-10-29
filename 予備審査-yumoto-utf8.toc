@@ -1,0 +1,45 @@
+\contentsline {section}{\numberline {0.1}諸論}{1}
+\contentsline {section}{\numberline {0.2}ブラックボックステストにおけるテスト分析とその課題}{1}
+\contentsline {subsection}{\numberline {0.2.1}本研究の対象となるテストケースの開発方法とテストレベル}{1}
+\contentsline {subsubsection}{テストケースの開発方法}{1}
+\contentsline {subsubsection}{テストレベル}{1}
+\contentsline {subsection}{\numberline {0.2.2}テスト分析}{2}
+\contentsline {subsubsection}{テスト分析の課題}{2}
+\contentsline {subsubsection}{ブラックボックステストにおけるテスト分析の先行研究}{2}
+\contentsline {section}{\numberline {0.3}論理的機能構造を使ったテストケースの特定方法}{3}
+\contentsline {subsection}{\numberline {0.3.1}テストカテゴリベースドテストのアプローチ}{3}
+\contentsline {subsection}{\numberline {0.3.2}検証実験からの考察}{3}
+\contentsline {subsubsection}{検証実験の手順}{3}
+\contentsline {subsubsection}{1回目と2回目の検証実験結果の評価}{4}
+\contentsline {subsection}{\numberline {0.3.3}3回目の検証実験の評価}{4}
+\contentsline {section}{\numberline {0.4}終わりに}{5}
+\contentsline {section}{\numberline {0.5}I/Oテストデータパターンを使った仕様項目特定の方法}{5}
+\contentsline {subsection}{\numberline {0.5.1}I/Oテストデータパターン}{5}
+\contentsline {subsection}{\numberline {0.5.2}これまでの実験データを使った調査}{7}
+\contentsline {subsection}{\numberline {0.5.3}サポートと相互作用に関する考察}{7}
+\contentsline {subsection}{\numberline {0.5.4}I/Oテストデータパターンを使ったテスト分析の実験}{7}
+\contentsline {subsubsection}{実験の目的}{7}
+\contentsline {subsubsection}{実験の題材について}{7}
+\contentsline {subsubsection}{実験の実施手順}{8}
+\contentsline {subsubsection}{実際のプロジェクトでのテストケースをテスト条件ごとに整理する}{8}
+\contentsline {subsubsection}{2)テスト対象フィーチャで使われる入力データ，出力データを明らかにする}{8}
+\contentsline {subsubsection}{3)I/Oテストデータパターンを付与する}{8}
+\contentsline {subsubsection}{4)論理的機能構造とI/Oテストデータパターンを使ってテストベースを分析する}{8}
+\contentsline {subsection}{\numberline {0.5.5}実験結果の評価}{8}
+\contentsline {subsubsection}{1)IOテストデータパターンの効果実証の結果}{8}
+\contentsline {subsubsection}{2)I/Oテストデータパターン毎の出現傾向の評価}{8}
+\contentsline {subsubsection}{3)現実のプロジェクトにて不足していた仕様項目}{9}
+\contentsline {subsection}{\numberline {0.5.6}終わりに}{10}
+\contentsline {section}{\numberline {0.6}データ共有タスク間の順序組合せテストケース抽出手法}{10}
+\contentsline {subsection}{\numberline {0.6.1}はじめに}{10}
+\contentsline {subsection}{\numberline {0.6.2}テストケース抽出方法と課題}{10}
+\contentsline {section}{\numberline {0.7}順序組合せによるテストケース抽出法}{11}
+\contentsline {subsection}{\numberline {0.7.1}順序組合せテストの概要}{11}
+\contentsline {subsection}{\numberline {0.7.2}ルール1：変更タスクの特定}{11}
+\contentsline {subsection}{\numberline {0.7.3}ルール2：波及タスクの特定}{11}
+\contentsline {subsection}{\numberline {0.7.4}ルール3：順序組合せテストケースの抽出}{12}
+\contentsline {section}{\numberline {0.8}順序組合せテストの適用評価}{12}
+\contentsline {subsection}{\numberline {0.8.1}考察}{12}
+\contentsline {subsection}{\numberline {0.8.2}おわりに}{13}
+\contentsline {section}{\numberline {0.9}結論}{13}
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }参考文献}{14}
