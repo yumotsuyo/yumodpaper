@@ -1,0 +1,218 @@
+%\documentclass[12pt,a4j]{jreport}
+\documentclass[a4paper,12pt]{jreport}
+%\usepackage[dvips]{graphicx,color}
+%\usepackage{array}main
+%\usepackage{amsmath,amsthm,amssymb}
+%\usepackage{refcheck}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{url}
+%\usepackage{epsfig}
+\usepackage[fleqn]{amsmath}
+%\usepackage[varg]{txfonts}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{flushend}
+\usepackage{subfig}
+
+%excel2latex用に追加
+\usepackage{multirow}
+\usepackage{bigstrut}
+
+%\usepackage{subfiles}
+
+%筑波大学のフォーマットからコピー
+\usepackage{times} % use Times Font instead of Computer Modern
+\setcounter{tocdepth}{3}
+\setcounter{page}{-1}
+
+\setlength{\oddsidemargin}{0.1in}
+\setlength{\evensidemargin}{0.1in}
+\setlength{\topmargin}{0.1in}
+%\setlength{\textwidth}{6in}
+\setlength{\textwidth}{35zw}
+%\setlength{\textheight}{10.1in}
+\setlength{\textheight}{34\baselineskip}
+\addtolength{\textheight}{\topskip}
+\setlength{\parskip}{1.4mm}
+\setlength{\topsep}{0em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% タイトル生成用パッケージ(重要)
+%\usepackage{sie-jp-sjis}
+\usepackage{sie-jp-utf}
+
+%% タイトル
+%% 【注意】タイトルの最後に\\ を入れるとエラーになります
+\title{入出力データの順序情報に基づくブラックボックステスト手法に関する研究}
+%\title{A study on the method of blackbox testing based on I/O data sequence}
+%% 著者
+\author{湯本剛}
+%% 学位 (2012/11 追加)
+%\degree{}
+%% 指導教員
+%\advisor{}
+
+%% 専攻名 と 年月
+%% 年月は必要に応じて書き替えてください。
+%\majorfield{△△△△}\programfield{□□□□}
+\yearandmonth{2018年 3月}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\thispagestyle{empty}
+\vspace*{20pt plus 1fil}
+\parindent=1zw
+\noindent
+%%
+%% 論文の概要(Abstract)
+%%
+\begin{center}
+{\bf 概要}
+\vspace{5mm}
+\end{center}
+本研究はブラックボックステストのテストケース抽出に抜け漏れやケース数が増 大する課題に対して，
+テスト対象に対する入出力データの順序情報に基づいてテストケースを抽出する 手法を提案し，合理的に
+テストケースを抽出することを成果とするものである．
+%%%%%
+\par
+\vspace{0pt plus 1fil}
+\newpage
+
+\pagenumbering{roman} % I, II, III, IV
+\tableofcontents
+\listoffigures
+%\listoftables
+
+\pagebreak \setcounter{page}{1}
+\pagenumbering{arabic} % 1,2,3
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\include{./D-yumoto-contents/content-1}
+%%%%%%%%%%%%%%%%%%%%%%%
+\include{./D-yumoto-contents/content-2}
+%%%%%%%%%%%%%%%%%%%%%%%
+\include{./D-yumoto-contents/content-3}
+%%%%%%%%%%%%%%%%%%%%%%%
+\include{./D-yumoto-contents/content-4}
+%%%%%%%%%%%%%%%%%%%%%%%
+\include{./D-yumoto-contents/content-5}
+\include{./D-yumoto-contents/content-5tblstds}
+%%%%%%%%%%%%%%%%%%%%%%%
+\include{./D-yumoto-contents/content-6}
+
+
+
+\chapter{転記前の部分}
+
+
+\section{はじめに}
+ソフトウェアの一部に変更を加えた場合，その変更の波及を探る変更波及解析（Change Impact Analysis）は，実務上の大きな課題である．
+産業界において変更にかかる活動は，新規開発よりも大きな割合を占めている．
+ゼロから新規にソフトウェアを開発するケースは稀であり，何らかの流用を基に変更を加える開発が主流となっている．
+開発方法においてもアジャイルが主流となり，変更の積み重ねによって開発が行われている．
+
+しかし，変更波及を合理的に制御する技術は，ソフトウェア工学とって未完成の分野である\cite{arnold1996software}．
+変更の背景は，時代と共に課題を難しくしている．
+ソフトウェアの多様化と複雑化，再利用範囲の増大などから変更波及の範囲が拡大し，かつ安易な変更による弊害など課題が山積している．
+これらの課題に対してソフトウェア工学は十分な解を提供できていない状況にある\cite{li2013survey}．
+
+
+本論文では，状態遷移を持つソフトウェアにおいて，変更波及がデータベースや外部変数などの保持データを介して生ずる場合のテストについて考える．
+課題の一つは，網羅基準である.データフローテストの全使用法（AU法）\cite{beiz90}を基にして,変更波及のテスト網羅基準を波及全使用法（Impact Data All Used：IDAU）として提案する．
+もう一つの課題は，IDAU法を満たす具体的な変更波及のテストケースの抽出方法である.変更波及のテストの設計手法として,順序組合せテストを提案する．
+最後に，ここで提案するIDAU法のコストの評価、すなわちテストケースの数を従来技法である状態遷移テストのS1網羅基準と比較をして考察を行い,提案する方法が合理的であることを示す．
+
+
+
+
+\section{変更波及とその解析}
+本節では，提案する網羅基準やテスト設計手法の前提となる，システムの構成と変更について定義し，変更波及テストの課題について詳細を示す．
+
+
+
+
+\subsection{変更と変更波及}
+$AS$に対して，何らかの変更を加える場合について考える．
+変更には，なんらかの意図があり，$AS$が持つ機能の変更であったり，不具合に対する変更や，性能や保守性の改善のためのリファクタリングであったりする．
+本論文では，変更の意図については取り扱わず，$AS$の構成要素（タスク，状態，保持データ）に対する具体的な変更について考える．ただし，テスト実行するためには，タスクを動かすことが必要となる．そのため，以降の議論はタスクに焦点を絞る．%1-1対応
+
+ひとつの変更$Q$について考える．
+変更$Q$は，タスク群$Ta$のあるタスク$Ta_i$に対して行われたとする．
+変更$Q$は，コードの削除や追加を含み，その結果$Ta_i$の版$R$が$R+1$に変更される．
+この変更の結果を$Ta^{R}_i$から$Ta^{R+1}_i$とする．
+
+変更$Q$の波及には，３つのケースが考えられる．
+\begin{enumerate}
+  \item 変更波及が無い場合．（リファクタリングに相当）
+  \item 変更波及が他のタスクへ波及しない場合．%3-7対応
+  \item 変更波及が他のタスクへ波及する場合．
+\end{enumerate}
+
+3.の変更波及は，タスク間の参照が図\ref{fig:fig-2}に示すように状態と保持データに限られるならば，該当する状態や保持データの参照を介した範囲が限られると考えられる．
+本論文では，この考え方から波及を受けるタスクを特定し，その合理的なテスト設計について論じる．
+
+
+%−−−-図2を入れる
+
+\begin{figure}[b]
+\begin{center}
+\includegraphics[scale=0.5]{./image/fig-2.png}
+\end{center}
+\caption{変更タスクと変更波及}
+\label{fig:fig-2}
+\end{figure}
+
+変更波及，あるいはその解析（Change Impact Analysis）に関する研究は古くから行われている．プロダクトラインやUML図面群を基に依存関係生成モデルを用いて波及解析を行う研究がある\cite{gomaa2005designing,briand2003impact,小谷正行2008}．
+タスク内のデータフローを基に変更波及を詳細に解析した研究がある\cite{campbell1990}．
+データベースなど保有データを基に変更波及解析を行う研究も行われている\cite{maule2008impact,加藤正恭2011}．
+一方，状態と状態遷移はマルコフ過程として実装されているので，過去の状態が未来の状態に影響しない．状態遷移に関する波及解析の研究は見当たらないのはそのためだと推測する．%3-8対応
+
+\subsection{状態と変更波及のテスト}
+変更波及は，保持データを介して波及タスクへ伝達する．状態や状態遷移自身は変更波及に関与しないが，変更波及のテストにおいて与えるデータの順序において状態を考慮する必要が生じる．
+
+保持データの構成について考える．その要素を$Ds=\{Ds_1,Ds_2,\cdots,Ds_j,\cdots,Ds_d\}$とし，変更波及を受ける保持データの要素を$Ds_j$とする．
+保持データに対する操作は，データのライフサイクルである「生成:C」「参照:R」「更新:U」「削除:D」を記したCRUD図で定義する．
+$Ds_j$を介して変更波及が生ずるのは，変更タスク$Ta_i$において「生成:C」あるいは「更新:U」が行われ，他のタスクで「参照:R」が行われた場合に波及タスクとなる．
+
+保持データのライフサイクル上の「生成:C」「参照:R」「更新:U」「削除:D」などの操作は，無条件に行われるのではなく，操作するタスクの制御フローに沿って行われる．
+制御フローは，２階層として捉えることができる．上位の制御フローはタスクの実行順序により決定される大きな制御の流れに相当する．
+個々のタスク内の制御フローが下位にあたる．個々のデータ参照実行文はその制御フロー上の条件文で実行が決定される．
+条件にはタスクへの入力，保持データ，状態が含まれる．
+
+変更波及を確認するには，変更が波及した保持データを参照するデータフローに沿ってテストを設計することになる．
+このデータフローを決定するのは，関係するタスクの実行順序とタスク内の制御フローであり，その制御フローを決定する際に状態が影響する．
+状態による制御が想定通りに行われない欠陥は，タスクの実行順序により決定される大きな制御の流れの判断のための状態の確認を，タスク実行のあるタイミングでのみ行っていることが原因となる．%1-2対応による追記
+よって，実際のテスト実行においては状態を考慮する必要が生ずる．
+
+\subsection{変更波及テストの網羅基準}
+
+テストにおける網羅基準については，その強度を含め制御フローとデータフローの観点から研究が行われ体系が作られている\cite{beiz90}.
+最も弱い網羅基準は制御フローのみに着目した実行文網羅，次が分岐網羅であり，最も強い網羅基準はデータフローを含めた全パス網羅（All Paths）である．%3-9
+全パステストは，すべての分岐の積であり現実的には実現不可能のため，全使用法（All Uses）が推奨されている\cite{beiz90}．
+
+変更波及をテストする場合，波及に関与するデータに着目し，そのデータフローテストを行う．
+一般的な全使用法は「データを定義したすべての場所から始まり，データを使用するすべての場所に至るまでのパスセグメントを最低限１つを含むテストケース」と定義されている\cite{beiz90}．
+この定義を変更タスクと波及タスクとの関係に置き換え「変更タスクにおいてデータの生成および更新があるデータを使用するすべてのタスク（波及タスク）を２つのタスクを実行するまでに経由するルートにかかわらず最低限１つ含むテストケース」とし，波及全使用法とする．
+
+\addtocontents{toc}{\contentsline {chapter}{\numberline {}参考文献}{123}}
+
+% \begin{thebibliography}{9}
+  %% 情報処理学会のフォーマットを使用
+% \bibliographystyle{ipsjunsrt}
+  %% 電子情報通信学会のフォーマット
+  \bibliography{mybib1}
+  \bibliographystyle{junsrt}
+%\bibliographystyle{jplain}
+
+% \bibitem{Cond95}
+% Huni,~H., R.~Johnson, and R.~Engel ``A Framework for Network Protocol Software'',
+% {\em Proceedings of OOPSLA'95}, pp. 358--369, 1995.
+% \end{thebibliography}
+
+%追加した　湯本
+%\end{multicols}
+\end{document}

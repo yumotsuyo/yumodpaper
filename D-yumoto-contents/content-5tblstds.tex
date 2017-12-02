@@ -1,0 +1,68 @@
+\begin{table}[t]
+\scriptsize
+\centering
+  \caption{S1 paths in screen transition of flight booking registration}
+\begin{tabular}{p{1 em}|p{7 em}|p{10.5 em}|p{7 em}|p{10.5 em}|p{7 em}|p{7 em}}
+    No    & State    & Event   & State    & Event    & State    &Proposal Method\\
+\hline
+\hline
+    1     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  &   $Ta2/Ds1U\rightarrow Ta2/Ds1U$ \\
+\hline
+    2     & Flight Booking  & Search [ETD・From・To] & Flight table & Cansell $\lor$× & Flight Booking  &  \\
+\hline
+    3     & Flight Booking  & Search [ETD・From・To] & Flight table & OK [FlightNo] & Flight Booking  &  \\
+\hline
+    4     & Flight Booking  & CFMOrder & OrderConfirmation & OK [OrderID] & Flight Booking  &  \\
+\hline
+    5     & Flight Booking  & Graph & Graph/list & ×$\lor$ Exit & Flight Booking  &  \\
+\hline
+    6     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & Search [ETD・From・To] & Flight table &   $Ta2/Ds1U \rightarrow Ta1R$ \\
+\hline
+    7     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & CFMOrder & OrderConfirmation &   $Ta2C\rightarrow Ta3R$ \\
+\hline
+    8     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & Graph & Graph/list &   $Ta2C\rightarrow Ta5R$ \\
+\hline
+    9     & Flight table & Cansell $\lor$× & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  &  \\
+\hline
+    10    & Flight table & OK [FlightNo] & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  &  \\
+\hline
+    11    & Flight table & Cansell $\lor$× & Flight Booking  & Search [ETD・From・To] & Flight table &  \\
+\hline
+    12    & Flight table & OK [FlightNo] & Flight Booking  & Search [ETD・From・To] & Flight table &  \\
+\hline
+    13    & Flight table & Cansell $\lor$× & Flight Booking  & CFMOrder & OrderConfirmation &  \\
+\hline
+    14    & Flight table & OK [FlightNo] & Flight Booking  & CFMOrder & OrderConfirmation &  \\
+\hline
+    15    & Flight table & Cansell $\lor$× & Flight Booking  & Graph & Graph/list &  \\
+\hline
+    16    & Flight table & OK [FlightNo] & Flight Booking  & Graph & Graph/list &  \\
+\hline
+    17    & OrderConfirmation & OK [OrderID] & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  &  \\
+\hline
+    18    & OrderConfirmation & OK [OrderID] & Flight Booking  & Search [ETD・From・To] & Flight table &  \\
+\hline
+    19    & OrderConfirmation & OK [OrderID] & Flight Booking  & CFMOrder & OrderConfirmation &  \\
+\hline
+    20    & OrderConfirmation & OK [OrderID] & Flight Booking  & Graph & Graph/list &  \\
+\hline
+    21    & Graph/list & ×$\lor$ Exit & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  &  \\
+\hline
+    22    & Graph/list & ×$\lor$ Exit & Flight Booking  & Search [ETD・From・To] & Flight table &  \\
+\hline
+    23    & Graph/list & ×$\lor$ Exit & Flight Booking  & CFMOrder & OrderConfirmation &  \\
+\hline
+    24    & Graph/list & ×$\lor$ Exit & Flight Booking  & Graph & Graph/list &  \\
+\hline
+    25    & Login & OK    & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  &  \\
+\hline
+    26    & Login & OK    & Flight Booking  & Search [ETD・From・To] & Flight table &  \\
+\hline
+    27    & Login & OK    & Flight Booking  & CFMOrder & OrderConfirmation &  \\
+\hline
+    28    & Login & OK    & Flight Booking  & Graph & Graph/list &  \\
+\hline
+
+    \end{tabular}%
+  \label{tab:STDS1}%
+\end{table}%
