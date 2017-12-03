@@ -19,7 +19,6 @@
 \usepackage{multirow}
 \usepackage{bigstrut}
 
-%\usepackage{subfiles}
 
 %筑波大学のフォーマットからコピー
 \usepackage{times} % use Times Font instead of Computer Modern
@@ -107,8 +106,12 @@
 
 
 \chapter{転記前の部分}
-
-
+\cite{IEEE610.12-90}
+\cite{yumoto2006}
+\cite{013}
+\cite{Ostrand:1988:CMS:62959.62964}
+\cite{Grindal:2007:IPM:1332044.1332085}
+\cite{takagi2010concurrent}
 \section{はじめに}
 ソフトウェアの一部に変更を加えた場合，その変更の波及を探る変更波及解析（Change Impact Analysis）は，実務上の大きな課題である．
 産業界において変更にかかる活動は，新規開発よりも大きな割合を占めている．
@@ -170,7 +173,8 @@ $AS$に対して，何らかの変更を加える場合について考える．
 タスク内のデータフローを基に変更波及を詳細に解析した研究がある\cite{campbell1990}．
 データベースなど保有データを基に変更波及解析を行う研究も行われている\cite{maule2008impact,加藤正恭2011}．
 一方，状態と状態遷移はマルコフ過程として実装されているので，過去の状態が未来の状態に影響しない．状態遷移に関する波及解析の研究は見当たらないのはそのためだと推測する．%3-8対応
-
+\cite{LSOF}
+\cite{kang1990feature}
 \subsection{状態と変更波及のテスト}
 変更波及は，保持データを介して波及タスクへ伝達する．状態や状態遷移自身は変更波及に関与しないが，変更波及のテストにおいて与えるデータの順序において状態を考慮する必要が生じる．
 
