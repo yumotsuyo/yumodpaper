@@ -406,7 +406,6 @@ $S\{Ta\}$&C&×&×&×&◯\\
 \end{figure*}
 
 題材となるフライト予約システムの仕様は，3章での実験にて演習題材として使っているものである．
-テスト対象の分析と，テストケース設計に関する用語は，国際標準であるISO/IEC/IEEE29119の定義に従い，テスト対象の論理的なサブセットをフィーチャセットと呼ぶ\cite{ISO29119}．%3-22対応
 本論文では，表~\ref{Featurelist}の新規フライト予約を，変更が入ったフィーチャセットとする．
 
 
@@ -559,7 +558,7 @@ $Ta_6$&$CU$&&&&&$Out$\\
 \label{TCLIST2}
 \begin{center}
 %\begin{tabular}{c|p{1 cm}|p{3.5 cm}|p{1.5 cm}}
-\begin{tabular}{c|p{3 cm}|p{2.1 cm}}
+\begin{tabular}{c|p{3 cm}|p{3 cm}}
 \multicolumn{3}{l}{新規フライト予約}\\
 \hline
 No&論理的テストケース&順序組み合わせ\\
@@ -594,13 +593,10 @@ No&論理的テストケース&順序組み合わせ\\
 仕様の詳細度合いは，DFD，ER図，CRUD図と画面遷移図では同等にしている．
 それは，画面遷移のイベントでのガード条件に記載したデータがDFDのエッジに記載したデータ，ER図のエンティティの属性と一致していることから確認できる．
 S1網羅基準を適用した結果として，表~\ref{tab:STDS1}に28の状態遷移パスを示した。
-この表の提案手法（Proposal method）の列には，提案手法で抽出した順序組み合わせに該当する順序組み合わせを示した。
-
-
-
+この表の提案手法の列には，順序組み合わせテストで抽出した表~\ref{TCLIST2}のテストケースNoを示した。
 
 S1網羅基準を適用すると28の状態遷移パスとなる．
-28の状態遷移パスのうち，対応する提案手法で抽出した順序組み合わせは，表~\ref{TCLIST2}テストケースNo.1，2，4，5の4つであった．
+28の状態遷移パスのうち，対応する提案手法で抽出した順序組み合わせは，表~\ref{TCLIST2}のテストケースNo.1，2，4，5の4つであった．
 これらは,本状態遷移図のフライト予約状態での登録イベントを起点にするもののみであった．
 
 \begin{table}[t]
@@ -617,13 +613,13 @@ S1網羅基準を適用すると28の状態遷移パスとなる．
 \hline
     3     & Flight Booking  & Search [ETD・From・To] & Flight table & OK [FlightNo] & Flight Booking  &  \\
 \hline
-    4     & Flight Booking  & CFMOrder & OrderConfirmation & OK [OrderID] & Flight Booking  &  \\
+    4     & Flight Booking  & CFMOrder & Order Confirmation & OK [OrderID] & Flight Booking  &  \\
 \hline
     5     & Flight Booking  & Graph & Graph/list & ×$\lor$ Exit & Flight Booking  &  \\
 \hline
     6     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & Search [ETD・From・To] & Flight table & 1 \\
 \hline
-    7     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & CFMOrder & OrderConfirmation & 4 \\
+    7     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & CFMOrder & Order Confirmation & 4 \\
 \hline
     8     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & Graph & Graph/list & 5 \\
 \hline
@@ -635,27 +631,27 @@ S1網羅基準を適用すると28の状態遷移パスとなる．
 \hline
     12    & Flight table & OK [FlightNo] & Flight Booking  & Search [ETD・From・To] & Flight table &  \\
 \hline
-    13    & Flight table & Cansell $\lor$× & Flight Booking  & CFMOrder & OrderConfirmation &  \\
+    13    & Flight table & Cansell $\lor$× & Flight Booking  & CFMOrder & Order Confirmation &  \\
 \hline
-    14    & Flight table & OK [FlightNo] & Flight Booking  & CFMOrder & OrderConfirmation &  \\
+    14    & Flight table & OK [FlightNo] & Flight Booking  & CFMOrder & Order Confirmation &  \\
 \hline
     15    & Flight table & Cansell $\lor$× & Flight Booking  & Graph & Graph/list &  \\
 \hline
     16    & Flight table & OK [FlightNo] & Flight Booking  & Graph & Graph/list &  \\
 \hline
-    17    & OrderConfirmation & OK [OrderID] & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  &  \\
+    17    & Order Confirmation & OK [OrderID] & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  &  \\
 \hline
-    18    & OrderConfirmation & OK [OrderID] & Flight Booking  & Search [ETD・From・To] & Flight table &  \\
+    18    & Order Confirmation & OK [OrderID] & Flight Booking  & Search [ETD・From・To] & Flight table &  \\
 \hline
-    19    & OrderConfirmation & OK [OrderID] & Flight Booking  & CFMOrder & OrderConfirmation &  \\
+    19    & Order Confirmation & OK [OrderID] & Flight Booking  & CFMOrder & Order Confirmation &  \\
 \hline
-    20    & OrderConfirmation & OK [OrderID] & Flight Booking  & Graph & Graph/list &  \\
+    20    & Order Confirmation & OK [OrderID] & Flight Booking  & Graph & Graph/list &  \\
 \hline
     21    & Graph/list & ×$\lor$ Exit & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  &  \\
 \hline
     22    & Graph/list & ×$\lor$ Exit & Flight Booking  & Search [ETD・From・To] & Flight table &  \\
 \hline
-    23    & Graph/list & ×$\lor$ Exit & Flight Booking  & CFMOrder & OrderConfirmation &  \\
+    23    & Graph/list & ×$\lor$ Exit & Flight Booking  & CFMOrder & Order Confirmation &  \\
 \hline
     24    & Graph/list & ×$\lor$ Exit & Flight Booking  & Graph & Graph/list &  \\
 \hline
@@ -663,7 +659,7 @@ S1網羅基準を適用すると28の状態遷移パスとなる．
 \hline
     26    & Login & OK    & Flight Booking  & Search [ETD・From・To] & Flight table &  \\
 \hline
-    27    & Login & OK    & Flight Booking  & CFMOrder & OrderConfirmation &  \\
+    27    & Login & OK    & Flight Booking  & CFMOrder & Order Confirmation &  \\
 \hline
     28    & Login & OK    & Flight Booking  & Graph & Graph/list &  \\
 \hline
