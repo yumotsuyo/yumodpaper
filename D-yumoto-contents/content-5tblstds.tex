@@ -1,12 +1,12 @@
 \begin{table}[t]
 \scriptsize
 \centering
-  \caption{S1 paths in screen transition of flight booking registration}
-\begin{tabular}{p{1 em}|p{7 em}|p{10.5 em}|p{7 em}|p{10.5 em}|p{7 em}|p{7 em}}
-    No    & State    & Event   & State    & Event    & State    &Proposal Method\\
+  \caption{フライト予約登録の画面遷移図のS1パス一覧}
+\begin{tabular}{p{1 em}|p{5 em}|p{9.5 em}|p{5 em}|p{9.5 em}|p{5 em}|p{2 em}}
+    No    & 状態    & イベント   & 状態    & イベント& 状態 &提案手法\\
 \hline
 \hline
-    1     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  &   $Ta2/Ds1U\rightarrow Ta2/Ds1U$ \\
+    1     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  &  2 \\
 \hline
     2     & Flight Booking  & Search [ETD・From・To] & Flight table & Cansell $\lor$× & Flight Booking  &  \\
 \hline
@@ -16,11 +16,11 @@
 \hline
     5     & Flight Booking  & Graph & Graph/list & ×$\lor$ Exit & Flight Booking  &  \\
 \hline
-    6     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & Search [ETD・From・To] & Flight table &   $Ta2/Ds1U \rightarrow Ta1R$ \\
+    6     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & Search [ETD・From・To] & Flight table & 1 \\
 \hline
-    7     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & CFMOrder & OrderConfirmation &   $Ta2C\rightarrow Ta3R$ \\
+    7     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & CFMOrder & OrderConfirmation & 4 \\
 \hline
-    8     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & Graph & Graph/list &   $Ta2C\rightarrow Ta5R$ \\
+    8     & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  & Graph & Graph/list & 5 \\
 \hline
     9     & Flight table & Cansell $\lor$× & Flight Booking  & Registration [FlightNo・Class・QTY・PAX] & Flight Booking  &  \\
 \hline
